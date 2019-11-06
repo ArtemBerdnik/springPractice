@@ -4,6 +4,9 @@ import enums.Ratings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 public class Event {
@@ -11,6 +14,7 @@ public class Event {
     private String name;
     private double eventPrice;
     private Ratings rating;
+    private List<Date> datesEventInAir;
 }
 
 //EventService - Manages events (movie shows).

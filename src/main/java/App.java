@@ -1,11 +1,14 @@
 import entities.Event;
 import entities.User;
+import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import servicesImpl.AuditoriumServiceImpl;
 import servicesImpl.EventServiceImpl;
 import servicesImpl.UserServiceImpl;
 
+@AllArgsConstructor
 public class App {
 
     private User user1;
@@ -13,15 +16,8 @@ public class App {
     private EventServiceImpl eventService;
     private AuditoriumServiceImpl auditoriumService;
 
-    public App(User user1, UserServiceImpl userService, EventServiceImpl eventService, AuditoriumServiceImpl auditoriumService){
-        this.user1 = user1;
-        this.userService = userService;
-        this.eventService = eventService;
-        this.auditoriumService = auditoriumService;
-    }
-
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("app.xml");
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("app.xml");
         App app = (App) context.getBean("app");
         System.out.println("before");
 

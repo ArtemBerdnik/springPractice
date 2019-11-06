@@ -4,12 +4,26 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
  		http://www.springframework.org/schema/beans
- 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-MM-dd"/>
+    </bean>
+
 
     <bean id="event" class="entities.Event">
         <constructor-arg value="black book"/>
         <constructor-arg value="100"/>
         <constructor-arg value="HIGH"/>
+        <constructor-arg>
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg>
+                    <value>2010-05-06</value>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
     </bean>
 
     <bean id="eventService" class="servicesImpl.EventServiceImpl">

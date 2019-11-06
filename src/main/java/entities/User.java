@@ -3,6 +3,8 @@ package entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 public class User {
@@ -10,5 +12,7 @@ public class User {
     private String name;
 
     private String emailAddress;
+
+    private Date birthdayDate;
 
 }

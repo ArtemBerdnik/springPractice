@@ -15,9 +15,18 @@
         <property name="ignoreResourceNotFound" value="true" />
     </bean>
 
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-MM-dd" />
+    </bean>
+
     <bean id="user" class="entities.User">
         <constructor-arg value="${name}"/>
         <constructor-arg value="${email}"/>
+        <constructor-arg>
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg value="${bday}" />
+            </bean>
+        </constructor-arg>
     </bean>
 
     <bean id="userService" class="servicesImpl.UserServiceImpl">
