@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:auditoriums.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+
+    <bean id="auditorium1" class="entities.Auditorium">
+        <constructor-arg value="Cool auditorium"/>
+        <constructor-arg value="25"/>
+        <constructor-arg value="25"/>
+    </bean>
+
+    <bean id="auditorium2" class="entities.Auditorium">
+        <constructor-arg value="White"/>
+        <constructor-arg value="100"/>
+        <constructor-arg value="10"/>
+    </bean>
+
+
+    <bean id="auditoriumService" class="servicesImpl.AuditoriumServiceImpl" scope="prototype">
+        <constructor-arg>
+            <list>
+                <ref bean="auditorium1"/>
+                <ref bean="auditorium2"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

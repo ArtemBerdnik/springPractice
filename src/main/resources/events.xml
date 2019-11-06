@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="event" class="entities.Event">
+        <constructor-arg value="black book"/>
+        <constructor-arg value="100"/>
+        <constructor-arg value="HIGH"/>
+    </bean>
+
+    <bean id="eventService" class="servicesImpl.EventServiceImpl">
+        <constructor-arg>
+            <list>
+                <ref bean="event"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
